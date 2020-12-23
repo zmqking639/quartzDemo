@@ -1,8 +1,14 @@
 package com.zmq.config;
 
 import com.zmq.factory.QuartzJobFactory;
+import com.zmq.listener.SimpleJobListener;
+import com.zmq.listener.SimpleSchedulerListener;
+import com.zmq.listener.SimpleTriggerListener;
+import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.impl.matchers.EverythingMatcher;
+import org.quartz.impl.matchers.KeyMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +23,15 @@ public class QuartzConfig {
 
     @Autowired
     private QuartzJobFactory jobFactory;
+
+    @Autowired
+    private SimpleSchedulerListener simpleSchedulerListener;
+
+    @Autowired
+    private SimpleJobListener simpleJobListener;
+
+    @Autowired
+    private SimpleTriggerListener simpleTriggerListener;
 
 
     @Bean
@@ -47,6 +62,16 @@ public class QuartzConfig {
     @Bean(name = "scheduler")
     public Scheduler scheduler() throws IOException, SchedulerException {
         Scheduler scheduler = schedulerFactoryBean().getScheduler();
+
+        //全局添加监听器
+        //添加SchedulerListener监听器
+        scheduler.getListenerManager().addSchedulerListener(simpleSchedulerListener);
+
+        // 添加JobListener, 支持带条件匹配监听器
+        scheduler.getListenerManager().addJobListener(simpleJobListener, KeyMatcher.keyEquals(JobKey.jobKey("myJob", "myGroup")));
+
+        // 添加triggerListener，设置全局监听
+        scheduler.getListenerManager().addTriggerListener(simpleTriggerListener, EverythingMatcher.allTriggers());
         return scheduler;
     }
 }
