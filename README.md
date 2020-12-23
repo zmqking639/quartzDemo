@@ -13,4 +13,6 @@ Quartz 是 Java 领域最著名的开源任务调度工具。
 
 下面我们一起来看看具体的应用实践！
 
-参考文章：https://mp.weixin.qq.com/s/zJSPzcsFl72JNoqZpkH94A
+参考文章：<br/>
+      &nbsp;&nbsp;SpringBoot 整合 Quartz 实现分布式调度  https://mp.weixin.qq.com/s/zJSPzcsFl72JNoqZpkH94A <br/>
+      &nbsp;&nbsp;分布式定时任务框架Quartz https://juejin.cn/post/6844904029277913095
