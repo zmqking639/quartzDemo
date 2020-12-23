@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.6.3
+Built-By: dell
+Build-Jdk: 11.0.5
+Implementation-Title: quartzDemo
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: org.quartz
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/quartzDemo
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.zmq.QuartzApplication
+Spring-Boot-Version: 2.1.0.RELEASE
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+
