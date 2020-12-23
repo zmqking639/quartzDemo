@@ -12,3 +12,5 @@ Quartz 是 Java 领域最著名的开源任务调度工具。
 特别需要注意的是：分布式部署时需要保证各个节点的系统时间一致！
 
 下面我们一起来看看具体的应用实践！
+
+参考文章：https://mp.weixin.qq.com/s/zJSPzcsFl72JNoqZpkH94A
